@@ -35,12 +35,12 @@
 </template>
 
 <script lang="ts">
-import ImageModal from '@/components/photo/Modal.vue'
-import PhotoItem from '@/components/photo/Item.vue'
-import PhotoSkeleton from '@/components/photo/Skeleton.vue'
-import { unsplashService } from '@/services/unsplash.service'
-import type { UnsplashPhoto } from '@/interfaces/unsplash.interface'
-import SearchInput from '@/components/search/Input.vue'
+import ImageModal from '../components/photo/Modal.vue'
+import PhotoItem from '../components/photo/Item.vue'
+import PhotoSkeleton from '../components/photo/Skeleton.vue'
+import { unsplashService } from '../services/unsplash.service'
+import type { UnsplashPhoto } from '../interfaces/unsplash.interface'
+import SearchInput from '../components/search/Input.vue'
 
 export default {
   name: 'HomeView',

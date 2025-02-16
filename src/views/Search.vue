@@ -43,11 +43,11 @@
 </template>
 
 <script lang="ts">
-import PhotoItem from '@/components/photo/Item.vue'
-import ImageModal from '@/components/photo/Modal.vue'
-import PhotoSkeleton from '@/components/photo/Skeleton.vue'
-import type { UnsplashPhoto } from '@/interfaces/unsplash.interface'
-import { unsplashService } from '@/services/unsplash.service'
+import PhotoItem from '../components/photo/Item.vue'
+import ImageModal from '../components/photo/Modal.vue'
+import PhotoSkeleton from '../components/photo/Skeleton.vue'
+import type { UnsplashPhoto } from '../interfaces/unsplash.interface'
+import { unsplashService } from '../services/unsplash.service'
 
 export default {
   name: 'SearchView',

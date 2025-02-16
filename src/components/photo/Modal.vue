@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import type { PropType } from 'vue'
-import type { UnsplashPhoto } from '@/interfaces/unsplash.interface.ts'
+import type { UnsplashPhoto } from '../../interfaces/unsplash.interface.ts'
 
 export default {
   name: 'ImageModal',

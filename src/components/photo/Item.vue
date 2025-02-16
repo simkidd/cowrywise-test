@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import type { UnsplashPhoto } from '@/interfaces/unsplash.interface'
+import type { UnsplashPhoto } from '../../interfaces/unsplash.interface'
 import type { PropType } from 'vue'
 
 export default {

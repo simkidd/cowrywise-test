@@ -1,4 +1,9 @@
-import { createRouter, createWebHistory, RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  type RouteLocationNormalized,
+  type RouteRecordRaw,
+} from 'vue-router'
 import HomeView from './views/Home.vue'
 import SearchView from './views/Search.vue'
 
