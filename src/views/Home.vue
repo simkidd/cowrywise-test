@@ -18,7 +18,7 @@
             <PhotoSkeleton v-for="n in 8" :key="n" />
           </template>
 
-          <template v-else>
+          <template v-else-if="photos.length > 0">
             <PhotoItem
               v-for="photo in photos"
               :key="photo.id"
@@ -26,6 +26,13 @@
               @click="openModal(photo)"
             />
           </template>
+
+          <div v-else class="no-results">
+            <div class="no-results-content">
+              <span class="no-results-icon">📷</span>
+              <h2 class="no-results-title">No photos found</h2>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -129,6 +136,40 @@ export default {
       width: 100%;
       row-gap: var(--grid-row-gap);
       column-gap: var(--grid-column-gap);
+
+      .no-results {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: var(--no-results-padding);
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-content {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        &-icon {
+          font-size: var(--no-results-icon-size);
+          display: block;
+          margin-bottom: 1.5rem;
+          opacity: 0.8;
+        }
+
+        &-title {
+          font-size: var(--text-size-md);
+          color: var(--color-text-primary);
+          margin-bottom: 1rem;
+        }
+
+        &-message {
+          color: var(--color-text-secondary);
+          font-size: var(--text-size-sm);
+          line-height: 1.5;
+        }
+      }
     }
   }
 }
