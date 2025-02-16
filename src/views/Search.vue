@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="search-page">
     <div class="top-header">
       <div class="top-header-inner container">
         <div class="search-results-text">
@@ -100,14 +100,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.app {
+.search-page {
   width: 100%;
   min-height: 100dvh;
   position: relative;
 
   .top-header {
-    background: #dde3ea;
-    height: 250px;
+    background: var(--color-header-bg);
+    height: var(--header-height);
 
     &-inner {
       width: 100%;
@@ -120,17 +120,17 @@ export default {
 
 .search-results-text {
   margin: 0 auto;
-  font-size: 42px;
+  font-size: var(--text-size-xl);
   font-weight: bold;
   width: 100%;
-  color: #273754;
+  color: var(--color-text-primary);
 
-  @media (max-width: 768px) {
-    font-size: 32px;
+  @media (max-width: var(--breakpoint-md)) {
+    font-size: var(--text-size-lg);
   }
 
   span {
-    color: #747c92;
+    color: var(--color-text-secondary);
   }
 }
 
@@ -139,23 +139,23 @@ export default {
 
   &-inner {
     position: relative;
-    max-width: 900px;
+    max-width: var(--container-max-width);
     margin-inline: auto;
-    margin-top: -50px;
-    padding-bottom: 3rem;
+    margin-top: var(--spacing-container-top);
+    padding-bottom: var(--spacing-container-bottom);
 
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-auto-rows: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-column), 1fr));
+      grid-auto-rows: var(--grid-auto-rows-base);
       width: 100%;
-      row-gap: 32px;
-      column-gap: 45px;
+      row-gap: var(--grid-row-gap);
+      column-gap: var(--grid-column-gap);
 
       .no-results {
         grid-column: 1 / -1;
         text-align: center;
-        padding: 4rem 1rem;
+        padding: var(--no-results-padding);
         min-height: 50vh;
         display: flex;
         align-items: center;
@@ -167,21 +167,21 @@ export default {
         }
 
         &-icon {
-          font-size: 4rem;
+          font-size: var(--no-results-icon-size);
           display: block;
           margin-bottom: 1.5rem;
           opacity: 0.8;
         }
 
         &-title {
-          font-size: 1.5rem;
-          color: #273754;
+          font-size: var(--text-size-md);
+          color: var(--color-text-primary);
           margin-bottom: 1rem;
         }
 
         &-message {
-          color: #747c92;
-          font-size: 1rem;
+          color: var(--color-text-secondary);
+          font-size: var(--text-size-sm);
           line-height: 1.5;
         }
       }

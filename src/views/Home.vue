@@ -96,8 +96,8 @@ export default {
   position: relative;
 
   .top-header {
-    background: #dde3ea;
-    height: 250px;
+    background: var(--color-header-bg);
+    height: var(--header-height);
 
     &-inner {
       width: 100%;
@@ -117,18 +117,18 @@ export default {
 
   &-inner {
     position: relative;
-    max-width: 900px;
+    max-width: var(--container-max-width);
     margin-inline: auto;
-    margin-top: -50px;
-    padding-bottom: 3rem;
+    margin-top: var(--spacing-container-top);
+    padding-bottom: var(--spacing-container-bottom);
 
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-auto-rows: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-column), 1fr));
+      grid-auto-rows: var(--grid-auto-rows-base);
       width: 100%;
-      row-gap: 32px;
-      column-gap: 45px;
+      row-gap: var(--grid-row-gap);
+      column-gap: var(--grid-column-gap);
     }
   }
 }
