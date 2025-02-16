@@ -1,4 +1,4 @@
-import type { UnsplashPhoto, UnsplashSearchResponse } from '../types/unsplash'
+import { UnsplashPhoto, UnsplashSearchResponse } from '../interfaces/unsplash.interface'
 import baseApi from './base.service'
 
 export const unsplashService = {

@@ -4,7 +4,7 @@
       <div class="top-header-inner container">
         <SearchInput
           v-model="searchQuery"
-          @search="searchPhotos"
+          @search="fetchPhotos"
           placeholder="Search for photo"
           class="main-search"
         />
@@ -41,18 +41,21 @@ import PhotoSkeleton from './components/photo/Skeleton.vue'
 import { unsplashService } from './services/unsplash.service'
 import SearchInput from '@/components/search/Input.vue'
 import type { UnsplashPhoto } from './interfaces/unsplash.interface'
-import { debounce } from './utils/debounce'
 
 export default {
   components: { PhotoItem, PhotoSkeleton, ImageModal, SearchInput },
   data() {
     return {
       photos: [] as UnsplashPhoto[],
-      searchQuery: 'vue js',
+      searchQuery: 'african',
       loading: true,
       selectedPhoto: null as UnsplashPhoto | null,
-      debouncedSearch: null as (() => void) | null,
     }
+  },
+  watch: {
+    searchQuery() {
+      this.fetchPhotos()
+    },
   },
   mounted() {
     this.fetchPhotos()
@@ -69,36 +72,15 @@ export default {
         this.loading = false
       }
     },
-    async searchPhotos() {
-      if (this.searchQuery.trim() === '') {
-        this.photos = []
-        return
-      }
-      await this.fetchPhotos()
-    },
-    handleSearch() {
-      if (this.debouncedSearch) {
-        this.debouncedSearch()
-      }
-    },
+
     openModal(photo: UnsplashPhoto) {
       this.selectedPhoto = photo
-    },
-  },
-  watch: {
-    searchQuery() {
-      this.handleSearch()
     },
   },
 }
 </script>
 
 <style scoped lang="scss">
-:root {
-  --grid-gap: 20px;
-  --search-height: 250px;
-}
-
 .app {
   width: 100%;
   min-height: 100dvh;
@@ -119,7 +101,6 @@ export default {
 
 .main-search {
   margin: 0 auto;
-  padding: 0 40px;
 }
 
 .container {
@@ -127,16 +108,18 @@ export default {
 
   &-inner {
     position: relative;
-    max-width: 1000px;
+    max-width: 900px;
     margin-inline: auto;
-    margin-top: -50px;
+    margin-top: -80px;
+    padding-block: 3rem;
 
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       grid-auto-rows: 10px;
       width: 100%;
-      gap: 30px;
+      gap: 32px;
+      column-gap: 45px;
     }
   }
 }

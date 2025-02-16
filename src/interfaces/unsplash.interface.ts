@@ -97,3 +97,9 @@ export interface UnsplashPhoto {
   asset_type: string
   user: User
 }
+
+export interface UnsplashSearchResponse {
+  results: UnsplashPhoto[]
+  total: number
+  total_pages: number
+}
