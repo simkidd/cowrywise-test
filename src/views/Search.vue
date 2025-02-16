@@ -16,7 +16,7 @@
             <PhotoSkeleton v-for="n in 8" :key="n" />
           </template>
 
-          <template v-else>
+          <template v-else-if="searchResults.length > 0">
             <PhotoItem
               v-for="photo in searchResults"
               :key="photo.id"
@@ -24,6 +24,16 @@
               @click="openModal(photo)"
             />
           </template>
+
+          <div v-else class="no-results">
+            <div class="no-results-content">
+              <span class="no-results-icon">📷</span>
+              <h2 class="no-results-title">No photos found for "{{ query }}"</h2>
+              <p class="no-results-message">
+                Try searching for something else or check your spelling
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -141,6 +151,40 @@ export default {
       width: 100%;
       row-gap: 32px;
       column-gap: 45px;
+
+      .no-results {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 4rem 1rem;
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-content {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        &-icon {
+          font-size: 4rem;
+          display: block;
+          margin-bottom: 1.5rem;
+          opacity: 0.8;
+        }
+
+        &-title {
+          font-size: 1.5rem;
+          color: #273754;
+          margin-bottom: 1rem;
+        }
+
+        &-message {
+          color: #747c92;
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+      }
     }
   }
 }
