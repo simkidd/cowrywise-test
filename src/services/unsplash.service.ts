@@ -17,4 +17,18 @@ export const unsplashService = {
       throw error
     }
   },
+  async getPhotos(page: number = 1, perPage: number = 8): Promise<UnsplashPhoto[]> {
+    try {
+      const response = await baseApi.get<UnsplashPhoto[]>('/photos', {
+        params: {
+          page: page,
+          per_page: perPage,
+        },
+      })
+      return response.data
+    } catch (error) {
+      console.error('API Error:', error)
+      throw error
+    }
+  },
 }

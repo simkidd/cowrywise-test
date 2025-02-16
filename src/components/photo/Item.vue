@@ -1,11 +1,13 @@
 <template>
   <div class="photo-item" :style="{ gridRowEnd: `span ${rowSpan}` }" @click="$emit('click')">
-    <img
-      :src="photo.urls.small"
-      :alt="photo.alt_description"
-      class="photo-image"
-      @load="calculateRowSpan"
-    />
+    <div class="photo-image-wrapper">
+      <img
+        :src="photo.urls.small"
+        :alt="photo.alt_description"
+        class="photo-image"
+        @load="calculateRowSpan"
+      />
+    </div>
     <div class="image-overlay">
       <div class="text-content">
         <p class="author">{{ photo.user.name }}</p>
@@ -31,7 +33,7 @@ export default {
     return {
       rowSpan: 0,
       baseRowHeight: 10, // Should match grid-auto-rows
-      rowGap: 20, // Should match CSS grid gap
+      rowGap: 32, // Should match CSS grid gap
     }
   },
   computed: {
@@ -59,45 +61,49 @@ export default {
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
-}
+  cursor: pointer;
 
-.photo-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+  .photo-image-wrapper {
+    width: 100%;
+    height: 100%;
+    display: block;
 
-.image-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.755), transparent);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  border-radius: 8px;
-  transition: opacity 0.3s ease-in-out;
-  height: 100%;
+    .photo-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
-  .text-content {
+  .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgb(0, 0, 0), transparent);
+    color: white;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-  }
+    justify-content: flex-end;
+    height: 50%;
 
-  .author {
-    font-weight: 600;
-    margin: 0;
-  }
+    .text-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
-  .location {
-    font-size: 0.85rem;
-    opacity: 0.8;
-    margin: 0;
+    .author {
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .location {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin: 0;
+    }
   }
 }
 </style>

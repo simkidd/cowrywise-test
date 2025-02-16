@@ -1,6 +1,9 @@
 <template>
   <div class="search-input">
     <div class="input-container">
+      <div class="search-icon">
+        <SearchIcon />
+      </div>
       <input
         :value="modelValue"
         @input="handleInput"
@@ -23,8 +26,11 @@
 </template>
 
 <script lang="ts">
+import SearchIcon from '../icons/SearchIcon.vue'
+
 export default {
   name: 'searchInput',
+  components: { SearchIcon },
   props: {
     modelValue: {
       type: String,
@@ -68,47 +74,64 @@ export default {
     backdrop-filter: blur(8px);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  }
+    display: flex;
+    align-items: center;
 
-  .input-field {
-    width: 100%;
-    height: var(--input-height);
-    padding: var(--padding);
-    padding-right: calc(var(--input-height) + var(--padding));
-    font-size: 1.1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: var(--border-radius);
-    transition:
-      border-color var(--transition-speed) ease,
-      box-shadow var(--transition-speed) ease;
-
-    &:focus {
-      outline: none;
-      border-color: #4d90fe;
-      box-shadow: 0 0 0 3px rgba(77, 144, 254, 0.15);
-    }
-  }
-
-  .clear-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: var(--input-height);
-    width: var(--input-height);
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #757575;
-    cursor: pointer;
-    transition: color var(--transition-speed) ease;
-
-    &:hover {
-      color: #212121;
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      color: #a1a0a0;
+      pointer-events: none;
+      svg {
+        width: 24px;
+        height: 24px;
+      }
     }
 
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.1);
+    .input-field {
+      width: 100%;
+      height: var(--input-height);
+      padding: var(--padding);
+      padding-right: calc(var(--input-height) + var(--padding));
+      padding-left: 56px;
+      font-size: 1.1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: var(--border-radius);
+      transition:
+        border-color var(--transition-speed) ease,
+        box-shadow var(--transition-speed) ease;
+
+      &:focus {
+        outline: none;
+        border-color: #4d90fe;
+        box-shadow: 0 0 0 3px rgba(77, 144, 254, 0.15);
+      }
+      &:focus ~ .search-icon {
+        color: #4d90fe; // Match focus color
+      }
+    }
+
+    .clear-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: var(--input-height);
+      width: var(--input-height);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #757575;
+      cursor: pointer;
+      transition: color var(--transition-speed) ease;
+
+      &:hover {
+        color: #212121;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(33, 33, 33, 0.1);
+      }
     }
   }
 }
